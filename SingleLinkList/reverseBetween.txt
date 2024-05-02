@@ -1,0 +1,41 @@
+Certainly! Let's break down the code snippet you provided step by step with an example:
+
+Given the initial linked list: 1 -> 2 -> 3 -> 4 -> 5 and m = 2, n = 4
+
+1. `let current = prev.next;`
+   - In our example, `prev` is pointing to node 1, so `current` will point to node 2.
+
+2. `for (let i = 0; i < n - m; i++) 
+   - This loop will iterate from 0 to 2 (n - m = 4 - 2 = 2) in our example.
+
+3. First iteration:
+   - `const temp = current.next;`
+     - `temp` will point to node 3.
+
+   - `current.next = temp.next;`
+     - This will make node 2 point to node 4, skipping node 3.
+
+   - `temp.next = prev.next;`
+     - Node 3 will now point to node 2.
+
+   - `prev.next = temp;`
+     - Node 1 will now point to node 3.
+
+After the first iteration, the linked list will look like: 1 -> 3 -> 2 -> 4 -> 5
+
+4. Second iteration:
+   - `const temp = current.next;`
+     - `temp` will point to node 4.
+
+   - `current.next = temp.next;`
+     - This will make node 2 point to node 5, skipping node 4.
+
+   - `temp.next = prev.next;`
+     - Node 4 will now point to node 3.
+
+   - `prev.next = temp;`
+     - Node 1 will now point to node 4.
+
+After the second iteration, the linked list will look like: 1 -> 4 -> 3 -> 2 -> 5
+
+This process effectively reverses the portion of the linked list between positions `m` and `n`.
