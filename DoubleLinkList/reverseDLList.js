@@ -75,6 +75,50 @@ class DoublyLinkedList {
     this.head = this.tail
     this.tail = temp
   }
+
+  // Define the 'reverse' method to reverse a doubly linked list.
+  // reverse() {
+  //   // Start at the first node, known as the 'head'.
+  //   let current = this.head;
+
+  //   // Create a 'temp' variable set to null.
+  //   // We'll use this to temporarily store data.
+  //   let temp = null;
+
+  //   // Loop through each node in the list.
+  //   // Continue as long as 'current' is not null.
+  //   while (current !== null) {
+
+  //     // Store the 'prev' pointer of the current node
+  //     // into 'temp'. This is like putting it in a safe box.
+  //     temp = current.prev;
+
+  //     // Now we swap the 'prev' and 'next' pointers.
+  //     // Make 'prev' point where 'next' was pointing.
+  //     current.prev = current.next;
+
+  //     // Make 'next' point where 'prev' was originally
+  //     // pointing, which we stored in 'temp'.
+  //     current.next = temp;
+
+  //     // Move to the next node in the original list.
+  //     // Remember, 'prev' now holds the original 'next'.
+  //     current = current.prev;
+  //   }
+
+  //   // We've reversed all the nodes. Now, let's switch the
+  //   // 'head' and 'tail'.
+
+  //   // Store the original 'head' into 'temp'.
+  //   temp = this.head;
+
+  //   // Set the new 'head' to be the original 'tail'.
+  //   this.head = this.tail;
+
+  //   // Set the new 'tail' to be the original 'head',
+  //   // which we saved in 'temp'.
+  //   this.tail = temp;
+  // }
 }
 
 let myDoublyLinkedList = new DoublyLinkedList(1)
