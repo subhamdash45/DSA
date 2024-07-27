@@ -1,81 +1,83 @@
 class Node {
   constructor(value) {
-    this.value = value
-    this.next = null
+    this.value = value;
+    this.next = null;
   }
 }
 
 class LinkedList {
   constructor(value) {
-    const newNode = new Node(value)
-    this.head = newNode
-    this.tail = this.head
+    const newNode = new Node(value);
+    this.head = newNode;
+    this.tail = this.head;
   }
 
   printList() {
-    let temp = this.head
+    let temp = this.head;
     while (temp !== null) {
-      console.log(temp.value)
-      temp = temp.next
+      console.log(temp.value);
+      temp = temp.next;
     }
   }
 
   getHead() {
     if (this.head === null) {
-      console.log("Head: null")
+      console.log("Head: null");
     } else {
-      console.log("Head: " + this.head.value)
+      console.log("Head: " + this.head.value);
     }
   }
 
   getTail() {
     if (this.tail === null) {
-      console.log("Tail: null")
+      console.log("Tail: null");
     } else {
-      console.log("Tail: " + this.tail.value)
+      console.log("Tail: " + this.tail.value);
     }
   }
 
   makeEmpty() {
-    this.head = null
-    this.tail = null
-    this.length = 0
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
   }
 
   push(value) {
-    const newNode = new Node(value)
+    const newNode = new Node(value);
     if (!this.head) {
-      this.head = newNode
-      this.tail = newNode
+      this.head = newNode;
+      this.tail = newNode;
     } else {
-      this.tail.next = newNode
-      this.tail = newNode
+      this.tail.next = newNode;
+      this.tail = newNode;
     }
   }
 
   findKthFromEnd(k) {
     // Initialize slow and fast pointers at head
-    let slow = this.head
-    let fast = this.head
+    let slow = this.head;
+    let fast = this.head;
 
     // Move fast pointer k steps ahead
     for (let i = 0; i < k; ++i) {
       // If fast reaches null, k is out of range
       if (fast === null) {
-        return null
+        return null;
       }
-      fast = fast.next
+      fast = fast.next;
     }
+    console.log(fast, "fast above");
 
     // Iterate until fast reaches the end
     while (fast !== null) {
       // Move slow and fast pointers one step
-      slow = slow.next
-      fast = fast.next
+      slow = slow.next;
+      fast = fast.next;
+      console.log(slow, fast, "fast and slow below");
     }
 
     // When fast reaches end, slow is at kth from end
-    return slow
+    return slow;
   }
 
   // WRITE THE FINDKTFROMEND METHOD HERE //
@@ -86,23 +88,24 @@ class LinkedList {
   /////////////////////////////////////////
 }
 
-let myLinkedList = new LinkedList(1)
-myLinkedList.push(2)
-myLinkedList.push(3)
-myLinkedList.push(4)
-myLinkedList.push(5)
+let myLinkedList = new LinkedList(1);
+myLinkedList.push(2);
+myLinkedList.push(3);
+myLinkedList.push(4);
+myLinkedList.push(5);
+myLinkedList.push(6);
 
-console.log("Original list:")
-myLinkedList.printList()
+console.log("Original list:");
+myLinkedList.printList();
 
-const k = 2
-const kthNodeFromEnd = myLinkedList.findKthFromEnd(k)
+const k = 2;
+const kthNodeFromEnd = myLinkedList.findKthFromEnd(k);
 
-console.log(`\n${k}th node from the end:`)
+console.log(`\n${k}th node from the end:`);
 if (kthNodeFromEnd) {
-  console.log(kthNodeFromEnd.value)
+  console.log(kthNodeFromEnd.value);
 } else {
-  console.log("Not found")
+  console.log("Not found");
 }
 
 /*

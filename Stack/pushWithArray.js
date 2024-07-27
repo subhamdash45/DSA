@@ -1,36 +1,60 @@
 class Stack {
   constructor() {
-    this.stackList = []
+    this.items = [];
   }
 
-  getStackList() {
-    return this.stackList
+  // Push element onto the stack
+  push(element) {
+    this.items.push(element);
   }
 
-  printStack() {
-    for (let i = this.stackList.length - 1; i >= 0; i--) {
-      console.log(this.stackList[i])
+  // Remove and return the top element of the stack
+  pop() {
+    if (this.isEmpty()) {
+      return "Stack is empty";
     }
+    return this.items.pop();
   }
 
-  isEmpty() {
-    return this.stackList.length === 0
-  }
-
+  // Return the top element of the stack without removing it
   peek() {
     if (this.isEmpty()) {
-      return null
-    } else {
-      return this.stackList[this.stackList.length - 1]
+      return "Stack is empty";
     }
+    return this.items[this.items.length - 1];
   }
 
+  // Return true if the stack is empty
+  isEmpty() {
+    return this.items.length === 0;
+  }
+
+  // Return the size of the stack
   size() {
-    return this.stackList.length
+    return this.items.length;
   }
 
-  push(value) {
-    const size = this.stackList.length
-    this.stackList[size] = value
+  // Print the elements of the stack
+  print() {
+    console.log(this.items.toString());
   }
 }
+
+// Example usage:
+const stack = new Stack();
+
+stack.push(10);
+stack.push(20);
+stack.push(30);
+
+console.log("Stack contents:");
+stack.print();
+
+console.log("Top element: " + stack.peek());
+
+console.log("Popped element: " + stack.pop());
+console.log("Stack contents after pop:");
+stack.print();
+
+console.log("Is stack empty? " + stack.isEmpty());
+console.log("Stack size: " + stack.size());

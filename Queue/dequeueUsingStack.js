@@ -40,46 +40,56 @@ class MyQueue {
   }
 
   enqueue(value) {
-    // Transfer all elements from stack1 to stack2
-    console.log(this.stack1, this.stack2, "here before 1st");
     while (!this.stack1.isEmpty()) {
       this.stack2.push(this.stack1.pop());
     }
-    console.log(this.stack1, this.stack2, "here before ");
-
-    // Push the new value onto stack1
     this.stack1.push(value);
-    console.log(this.stack1, this.stack2, "here after");
-    // Transfer all elements back from stack2 to stack1
     while (!this.stack2.isEmpty()) {
       this.stack1.push(this.stack2.pop());
     }
-    console.log(this.stack1, this.stack2, "here again after ");
+  }
+
+  dequeue() {
+    if (this.isEmpty()) {
+      return null;
+    } else {
+      return this.stack1.pop();
+    }
   }
 }
 
 const queue = new MyQueue();
 
-console.log("Is the queue empty? ", queue.isEmpty());
-
 queue.enqueue(1);
-console.log("Peek after enqueueing 1: ", queue.peek());
-
 queue.enqueue(2);
-console.log("Peek after enqueueing 2: ", queue.peek());
-
 queue.enqueue(3);
-console.log("Peek after enqueueing 3: ", queue.peek());
-
+console.log("Initial queue state:");
+console.log("Peek: ", queue.peek());
 console.log("Is the queue empty? ", queue.isEmpty());
+
+console.log("Dequeueing the first element: ", queue.dequeue());
+console.log("Peek after dequeueing: ", queue.peek());
+
+console.log("Dequeueing the second element: ", queue.dequeue());
+console.log("Peek after dequeueing: ", queue.peek());
+
+console.log("Dequeueing the third element: ", queue.dequeue());
+console.log("Is the queue empty? ", queue.isEmpty());
+
+console.log("Dequeueing from empty queue: ", queue.dequeue());
 
 /*
   EXPECTED OUTPUT:
   ----------------
-  Is the queue empty?  true
-  Peek after enqueueing 1:  1
-  Peek after enqueueing 2:  1
-  Peek after enqueueing 3:  1
+  Initial queue state:
+  Peek:  1
   Is the queue empty?  false
+  Dequeueing the first element:  1
+  Peek after dequeueing:  2
+  Dequeueing the second element:  2
+  Peek after dequeueing:  3
+  Dequeueing the third element:  3
+  Is the queue empty?  true
+  Dequeueing from empty queue:  null
 
 */

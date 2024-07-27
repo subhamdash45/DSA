@@ -1,70 +1,73 @@
 class Node {
   constructor(value) {
-    this.value = value
-    this.next = null
+    this.value = value;
+    this.next = null;
   }
 }
 
 class LinkedList {
   constructor(value) {
-    const newNode = new Node(value)
-    this.head = newNode
-    this.length = 1
+    const newNode = new Node(value);
+    this.head = newNode;
+    this.length = 1;
   }
 
   printList() {
-    let temp = this.head
+    let temp = this.head;
     while (temp !== null) {
-      console.log(temp.value)
-      temp = temp.next
+      console.log(temp.value);
+      temp = temp.next;
     }
   }
 
   getHead() {
     if (this.head === null) {
-      console.log("Head: null")
+      console.log("Head: null");
     } else {
-      console.log("Head: " + this.head.value)
+      console.log("Head: " + this.head.value);
     }
   }
 
   getLength() {
-    console.log("Length: " + this.length)
+    console.log("Length: " + this.length);
   }
 
   makeEmpty() {
-    this.head = null
-    this.length = 0
+    this.head = null;
+    this.length = 0;
   }
 
   push(value) {
-    const newNode = new Node(value)
+    const newNode = new Node(value);
     if (!this.head) {
-      this.head = newNode
+      this.head = newNode;
     } else {
-      let current = this.head
+      let current = this.head;
       while (current.next !== null) {
-        current = current.next
+        current = current.next;
       }
-      current.next = newNode
+      current.next = newNode;
     }
-    this.length++
+    this.length++;
   }
 
   removeDuplicates() {
-    const seen = new Set()
-    let temp = this.head
-    let pre = null
+    const seen = new Set();
+    let temp = this.head;
+    let pre = null;
     while (temp) {
       if (seen.has(temp.value)) {
-        pre.next = temp.next
+        debugger;
+        console.log(pre, temp, "before");
+        pre.next = temp.next;
         // temp.next = null
-        this.length--
+        console.log(pre, temp, "after");
+        this.length--;
       } else {
-        seen.add(temp.value)
-        pre = temp
+        seen.add(temp.value);
+        pre = temp;
       }
-      temp = temp.next
+      temp = temp.next;
     }
   }
 
@@ -76,21 +79,22 @@ class LinkedList {
   ////////////////////////////////////////////
 }
 
-let myLinkedList = new LinkedList(1)
-myLinkedList.push(2)
-myLinkedList.push(3)
-myLinkedList.push(3)
-myLinkedList.push(4)
-myLinkedList.push(5)
-myLinkedList.push(5)
+let myLinkedList = new LinkedList(1);
+myLinkedList.push(2);
+myLinkedList.push(5);
+myLinkedList.push(3);
+myLinkedList.push(4);
+myLinkedList.push(2);
+myLinkedList.push(7);
+myLinkedList.push(8);
 
-console.log("Original list:")
-myLinkedList.printList()
+console.log("Original list:");
+myLinkedList.printList();
 
-myLinkedList.removeDuplicates()
+myLinkedList.removeDuplicates();
 
-console.log("\nList after removing duplicates:")
-myLinkedList.printList()
+console.log("\nList after removing duplicates:");
+myLinkedList.printList();
 
 /*
   EXPECTED OUTPUT:

@@ -1,79 +1,79 @@
 class Node {
   constructor(value) {
-    this.value = value
-    this.next = null
-    this.prev = null
+    this.value = value;
+    this.next = null;
+    this.prev = null;
   }
 }
 
 class DoublyLinkedList {
   constructor(value) {
-    const newNode = new Node(value)
-    this.head = newNode
-    this.tail = newNode
-    this.length = 1
+    const newNode = new Node(value);
+    this.head = newNode;
+    this.tail = newNode;
+    this.length = 1;
   }
 
   printList() {
-    let temp = this.head
+    let temp = this.head;
     while (temp !== null) {
-      console.log(temp.value)
-      temp = temp.next
+      console.log(temp.value);
+      temp = temp.next;
     }
   }
 
   getHead() {
     if (this.head === null) {
-      console.log("Head: null")
+      console.log("Head: null");
     } else {
-      console.log("Head: " + this.head.value)
+      console.log("Head: " + this.head.value);
     }
   }
 
   getTail() {
     if (this.tail === null) {
-      console.log("Tail: null")
+      console.log("Tail: null");
     } else {
-      console.log("Tail: " + this.tail.value)
+      console.log("Tail: " + this.tail.value);
     }
   }
 
   getLength() {
-    console.log("Length: " + this.length)
+    console.log("Length: " + this.length);
   }
 
   makeEmpty() {
-    this.head = null
-    this.tail = null
-    this.length = 0
+    this.head = null;
+    this.tail = null;
+    this.length = 0;
   }
 
   push(value) {
-    const newNode = new Node(value)
+    const newNode = new Node(value);
     if (this.length === 0) {
-      this.head = newNode
-      this.tail = newNode
+      this.head = newNode;
+      this.tail = newNode;
     } else {
-      this.tail.next = newNode
-      newNode.prev = this.tail
-      this.tail = newNode
+      this.tail.next = newNode;
+      newNode.prev = this.tail;
+      this.tail = newNode;
     }
-    this.length++
-    return this
+    this.length++;
+    return this;
   }
 
   reverse() {
-    let current = this.head
-    let temp = null
+    let current = this.head;
+    let temp = null;
     while (current) {
-      temp = current.prev
-      current.prev = current.next
-      current.next = current.prev
-      current = current.prev
+      temp = current.prev;
+      current.prev = current.next;
+      current.next = temp;
+      current = current.prev;
     }
-    temp = this.head
-    this.head = this.tail
-    this.tail = temp
+    temp = this.head;
+    this.head = this.tail;
+    this.tail = temp;
   }
 
   // Define the 'reverse' method to reverse a doubly linked list.
@@ -121,33 +121,33 @@ class DoublyLinkedList {
   // }
 }
 
-let myDoublyLinkedList = new DoublyLinkedList(1)
-myDoublyLinkedList.push(2)
-myDoublyLinkedList.push(3)
-myDoublyLinkedList.push(4)
-myDoublyLinkedList.push(5)
+let myDoublyLinkedList = new DoublyLinkedList(1);
+myDoublyLinkedList.push(2);
+myDoublyLinkedList.push(3);
+myDoublyLinkedList.push(4);
+myDoublyLinkedList.push(5);
 
-console.log("Original list:")
-myDoublyLinkedList.printList()
+console.log("Original list:");
+myDoublyLinkedList.printList();
 
-myDoublyLinkedList.reverse()
-console.log("\nList after reversing:")
-myDoublyLinkedList.printList()
+myDoublyLinkedList.reverse();
+console.log("\nList after reversing:");
+myDoublyLinkedList.printList();
 
 // Create a new list with an even number of elements
-let myDoublyLinkedList2 = new DoublyLinkedList(1)
-myDoublyLinkedList2.push(2)
-myDoublyLinkedList2.push(3)
-myDoublyLinkedList2.push(4)
-myDoublyLinkedList2.push(5)
-myDoublyLinkedList2.push(6)
+let myDoublyLinkedList2 = new DoublyLinkedList(1);
+myDoublyLinkedList2.push(2);
+myDoublyLinkedList2.push(3);
+myDoublyLinkedList2.push(4);
+myDoublyLinkedList2.push(5);
+myDoublyLinkedList2.push(6);
 
-console.log("\nOriginal list 2:")
-myDoublyLinkedList2.printList()
+console.log("\nOriginal list 2:");
+myDoublyLinkedList2.printList();
 
-myDoublyLinkedList2.reverse()
-console.log("\nList 2 after reversing:")
-myDoublyLinkedList2.printList()
+myDoublyLinkedList2.reverse();
+console.log("\nList 2 after reversing:");
+myDoublyLinkedList2.printList();
 
 /*
   EXPECTED OUTPUT:
